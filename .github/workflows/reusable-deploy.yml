@@ -1,0 +1,22 @@
+name: Reusable Deploy
+
+on:
+  workflow_call:
+    inputs:
+      buildCode:
+        description: "Build Code"
+        required: true
+        type: string
+      targetEnvironment:
+        description: "Target Environment"
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show parameters
+        run: |
+          echo "Build Code: ${{ inputs.buildCode }}"
+          echo "Target Environment: ${{ inputs.targetEnvironment }}"
